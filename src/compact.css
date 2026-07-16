@@ -1,0 +1,10 @@
+.row{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  gap:8px!important;
+}
+
+.row select{
+  min-width:0;
+  padding-left:12px;
+  padding-right:30px;
+}
