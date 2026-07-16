@@ -42,7 +42,7 @@ document.addEventListener('click',async event=>{
     const canShareFile=!navigator.canShare||navigator.canShare({files:[file]});
     if(navigator.share&&canShareFile){
       try{
-        await navigator.share({title:document.title,text:'우리 팀 선발 명단',files:[file]});
+        await navigator.share({files:[file]});
         showNotice('공유가 완료됐어요.');
         return;
       }catch(error){
