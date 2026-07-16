@@ -39,7 +39,8 @@ document.addEventListener('click',async event=>{
     const blob=await toBlob(capture,{pixelRatio:2,cacheBust:true,skipFonts:true});
     if(!blob)throw new Error('empty capture');
     const file=new File([blob],'우리팀-스쿼드.png',{type:'image/png'});
-    if(navigator.share&&navigator.canShare?.({files:[file]})){
+    const canShareFile=!navigator.canShare||navigator.canShare({files:[file]});
+    if(navigator.share&&canShareFile){
       try{
         await navigator.share({title:document.title,text:'우리 팀 선발 명단',files:[file]});
         showNotice('공유가 완료됐어요.');
@@ -48,15 +49,8 @@ document.addEventListener('click',async event=>{
         if((error as Error).name==='AbortError')return;
       }
     }
-    if(navigator.clipboard?.write&&'ClipboardItem' in window){
-      try{
-        await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);
-        showNotice('이미지를 복사했어요. 카카오톡 대화방에서 붙여넣기 해주세요.');
-        return;
-      }catch{/* 이미지 미리보기 방식으로 계속 진행 */}
-    }
     showPreview(URL.createObjectURL(blob));
-    showNotice('이미지를 길게 눌러 카카오톡으로 공유해주세요.');
+    showNotice('공유창을 지원하지 않는 브라우저예요. 이미지를 길게 눌러 공유해주세요.');
   }catch(error){
     console.error('capture failed',error);
     showNotice('캡처를 만들지 못했어요. 잠시 후 다시 시도해주세요.');
