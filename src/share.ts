@@ -16,7 +16,7 @@ const showPreview=(url:string)=>{
   layer.className='share-preview';
   layer.setAttribute('role','dialog');
   layer.setAttribute('aria-modal','true');
-  layer.innerHTML=`<div class="share-preview-card"><h2>캡처가 완성됐어요</h2><p>이미지를 길게 누른 뒤 이미지 공유를 선택하면 카카오톡으로 보낼 수 있어요.</p><img src="${url}" alt="완성된 스쿼드 캡처"><button class="share-preview-close" type="button">닫기</button></div>`;
+  layer.innerHTML=`<div class="share-preview-card"><h2>캡처가 완성됐어요</h2><p>이미지를 길게 누른 뒤 이미지 공유를 선택하면 카카오톡으로 보낼 수 있어요.</p><img src="${url}" alt="완성된 스쿼드 캡처"><a class="share-preview-open" href="${url}" target="_blank" rel="noopener">이미지만 크게 열기</a><button class="share-preview-close" type="button">닫기</button></div>`;
   const close=()=>{URL.revokeObjectURL(url);layer.remove()};
   layer.querySelector('.share-preview-close')?.addEventListener('click',close);
   layer.addEventListener('click',e=>{if(e.target===layer)close()});

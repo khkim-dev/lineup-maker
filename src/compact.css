@@ -8,3 +8,24 @@
   padding-left:12px;
   padding-right:30px;
 }
+
+.share-preview-open{
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:50px;
+  margin-top:14px;
+  border-radius:9px;
+  background:#b8f238;
+  color:#10160f;
+  font-weight:900;
+  text-decoration:none;
+}
+
+.share-preview-open:active{
+  transform:scale(.98);
+}
+
+.share-preview-open+.share-preview-close{
+  margin-top:8px;
+}
