@@ -1,0 +1,1 @@
+{"packageManager":"pnpm@11.9.0","scripts":{"dev":"vite --host 127.0.0.1","build":"vite build"},"dependencies":{"@vitejs/plugin-react":"latest","flag-icons":"^7.5.0","html-to-image":"latest","lucide-react":"latest","react":"latest","react-dom":"latest","typescript":"latest","vite":"latest"}}
